@@ -15,9 +15,9 @@ function preload(){
   space_img = loadImage("./assets/space.jpg")
   plasmaBalls_img = loadImage("./assets/plasmaBall.png")
   blast = loadAnimation("./assets/blast 1.png","./assets/blast 2.png","./assets/blast 3.png","./assets/blast 4.png","./assets/blast 5.png","./assets/blast 6.png","./assets/blast 7.png")
-  // life1_img = loadImage("./assets/1.png")
-  // life2_img = loadImage("./assets/2.png")
-  // life3_img = loadImage("./assets/3.png")
+  life1_img = loadImage("./assets/1.png")
+ // life2_img = loadImage("./assets/2.png")
+  //life3_img = loadImage("./assets/3.png")
 
 }
 function setup() {
@@ -28,20 +28,20 @@ function setup() {
   playerShip.addImage(player_img)
   // playerShip.debug = true
 
-  // life1 = createSprite(20, 20, 50, 50);
-  // life1.scale = 0.09;
-  // life1.addImage(life1_img)
-  // life1.visible = false
+   life1 = createSprite(20, 20, 50, 50);
+  life1.scale = 0.09;
+  life1.addImage(life1_img)
+  life1.visible = false
 
-  // life2 = createSprite(40, 20, 50, 50);
-  // life2.scale = 0.09;
-  // life2.addImage(life2_img)
-  // life2.visible = false
+  life2 = createSprite(40, 20, 50, 50);
+  life2.scale = 0.09;
+  life2.addImage(life1_img)
+  life2.visible = false
 
-  // life3 = createSprite(60, 20, 50, 50);
-  // life3.scale = 0.09;
-  // life3.addImage(life3_img)
-  // life3.visible = false
+  life3 = createSprite(60, 20, 50, 50);
+  life3.scale = 0.09;
+  life3.addImage(life1_img)
+  life3.visible = false
 
   enemyGroup = new Group()
   plasmaBallGroup = new Group()
@@ -55,27 +55,34 @@ function draw() {
 
  if(gameState === 1){
 
-    
-    // if(life == 3){
+  swal({
+    title:'Oh Shit.......',
+    text:'You died',
+    text:'your killed'+ score,
+    imageUrl:'https://cdn.shopify.com/s/files/1/1061/1924/products/Thumbs_Down_Sign_Emoji_Icon_ios10_grande.png',
+    imageSize:'100x100',
+    confirmButtonText:'Thanx For Playing'
+  })
+    if(life == 3){
 
-    //   life3.visible = true
-    //   life2.visible = false
-    //   life1.visible = false
-    // }
+      life3.visible = true
+      life2.visible = false
+      life1.visible = false
+    }
 
-    // if(life == 2){
+    if(life == 2){
 
-    //   life3.visible = false
-    //   life2.visible = true
-    //   life1.visible = false
-    // }
+      life3.visible = false
+      life2.visible = true
+      life1.visible = false
+    }
 
-    // if(life == 1){
+    if(life == 1){
 
-    //   life3.visible = false
-    //   life2.visible = false
-    //   life1.visible = true
-    // }
+      life3.visible = false
+      life2.visible = false
+      life1.visible = true
+    }
     spawnEnemyShip();
     if(keyDown (RIGHT_ARROW)){
   
@@ -151,11 +158,11 @@ function handleGameOver(enemyGroup){
 
     gameState = 2;
     swal({
-      title:'Oh Shit.......',
+      title:'Oh .......',
       text:'You died',
       text:'your killed'+ score,
       imageUrl:'https://cdn.shopify.com/s/files/1/1061/1924/products/Thumbs_Down_Sign_Emoji_Icon_ios10_grande.png',
-      imageSize:'100x100',
+      imageSize:'10x10',
       confirmButtonText:'Thanx For Playing'
     })
   }
